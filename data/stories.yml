@@ -1,0 +1,377 @@
+version: "2.0"
+
+stories:
+
+- story: greeting path
+  steps:
+  - intent: greet
+  - action: utter_greet
+
+- story: story_1
+  steps:
+  - intent: inform
+    entities:
+    - cuisine: "italian"
+    - ingredient: "tomato"
+  - action: action_check_data
+  - intent: deny
+  - action: utter_general_ask
+  - intent: inform_ingredient
+    entities:
+    - ingredient: "tomato"
+  - action: action_add_remove_ingredient
+  - intent: affirm
+  - action: action_search
+  - action: utter_do_you_like
+  - intent: affirm
+  - action: action_send_recipe
+  - action: utter_bye
+
+  
+- story: story_2
+  steps:
+  - intent: inform
+    entities:
+    - cuisine: "italian"
+    - ingredient: "tomato"
+  
+  - action: action_check_data
+  - intent: deny
+  - action: utter_general_ask
+
+  - intent: inform_ingredient
+    entities:
+    - ingredient: "tomato"
+  - action: action_add_remove_ingredient
+  
+  - intent: affirm
+  - action: action_search
+  - action: utter_do_you_like
+  - intent: deny
+
+  - action: action_next_recipe
+  - action: utter_do_you_like  
+  - intent: affirm
+
+  - action: action_send_recipe
+  - action: utter_bye
+
+
+- story: story_3
+  steps:
+  - intent: inform
+    entities:
+    - cuisine: "italian"
+    - ingredient: "tomato"
+  
+  - action: action_check_data
+  - intent: deny
+
+  - action: utter_general_ask
+  - intent: inform_ingredient
+    entities:
+    - ingredient: "tomato"
+  - action: action_add_remove_ingredient
+  - intent: affirm
+
+  - action: action_search
+  - action: utter_do_you_like
+  - intent: deny
+
+  - action: action_next_recipe
+  - action: utter_do_you_like  
+  - intent: deny
+
+  - action: action_next_recipe
+  - action: utter_do_you_like  
+  - intent: affirm
+
+  - action: action_send_recipe
+  - action: utter_bye
+
+
+- story: story_4
+  steps:
+  - intent: inform
+    entities:
+    - cuisine: "italian"
+    - ingredient: "tomato"
+  
+  - action: action_check_data
+  - intent: affirm
+
+  - action: action_search
+  - action: utter_do_you_like
+  - intent: deny
+
+  - action: action_next_recipe
+  - action: utter_do_you_like  
+  - intent: deny
+
+  - action: action_next_recipe
+  - action: utter_do_you_like  
+  - intent: affirm
+
+  - action: action_send_recipe
+  - action: utter_bye
+
+- story: story_5
+  steps:
+  - intent: inform
+    entities:
+    - cuisine: "italian"
+    - ingredient: "tomato"
+  
+  - action: action_check_data
+  - intent: affirm
+
+  - action: action_next_recipe
+  - action: utter_do_you_like  
+  - intent: affirm
+
+  - action: action_send_recipe
+  - action: utter_bye
+
+
+
+
+- story: story_6
+  steps:
+  - intent: inform
+    entities:
+    - cuisine: "italian"
+    - ingredient: "tomato"
+  - action: action_check_data
+  - intent: inform_ingredient
+    entities:
+    - ingredient: "tomato"
+  - action: action_add_remove_ingredient
+  - intent: affirm
+  - action: action_search
+  - action: utter_do_you_like
+  - intent: affirm
+  - action: action_send_recipe
+  - action: utter_bye
+
+  
+- story: story_7
+  steps:
+  - intent: inform
+    entities:
+    - cuisine: "italian"
+    - ingredient: "tomato"
+  
+  - action: action_check_data
+  - intent: inform_ingredient
+    entities:
+    - ingredient: "tomato"
+  - action: action_add_remove_ingredient
+  
+  - intent: affirm
+  - action: action_search
+  - action: utter_do_you_like
+  - intent: deny
+
+  - action: action_next_recipe
+  - action: utter_do_you_like  
+  - intent: affirm
+
+  - action: action_send_recipe
+  - action: utter_bye
+
+
+- story: story_8
+  steps:
+  - intent: inform
+    entities:
+    - cuisine: "italian"
+    - ingredient: "tomato"
+  
+  - action: action_check_data
+  - intent: inform_ingredient
+    entities:
+    - ingredient: "tomato"
+  - action: action_add_remove_ingredient
+  - intent: affirm
+
+  - action: action_search
+  - action: utter_do_you_like
+  - intent: deny
+
+  - action: action_next_recipe
+  - action: utter_do_you_like  
+  - intent: deny
+
+  - action: action_next_recipe
+  - action: utter_do_you_like  
+  - intent: affirm
+
+  - action: action_send_recipe
+  - action: utter_bye
+
+
+- story: interactive_story_1
+  steps:
+  - intent: inform
+  - action: action_check_data
+  - intent: inform
+    entities:
+    - cuisine: italian
+  - action: action_check_data
+  - intent: affirm
+  - action: action_search
+  - action: utter_do_you_like
+  - intent: deny
+  - action: action_next_recipe
+  - action: utter_do_you_like
+  - intent: deny
+  - action: action_next_recipe
+  - action: utter_do_you_like
+  - intent: affirm
+  - action: action_send_recipe
+  - action: utter_bye
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: inform
+  - action: action_check_data
+  - intent: inform
+    entities:
+    - cuisine: italian
+  - action: action_check_data
+  - intent: affirm
+  - action: action_search
+  - action: utter_do_you_like
+  - intent: affirm
+  - action: action_send_recipe
+  - action: utter_bye
+
+- story: interactive_story_1
+  steps:
+  - intent: inform
+  - action: action_check_data
+  - intent: deny
+  - action: action_search
+  - action: utter_do_you_like
+  - intent: deny
+  - action: action_next_recipe
+  - action: utter_do_you_like
+  - intent: affirm
+  - action: action_send_recipe
+  - action: utter_bye
+
+- story: interactive_story_2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: inform
+    entities:
+    - cuisine: italian
+  - action: action_check_data
+  - intent: deny
+    entities:
+    - cuisine: american
+  - action: action_check_data
+  - intent: affirm
+    entities:
+    - cuisine: american
+  - action: action_search
+  - action: utter_do_you_like
+  - intent: affirm
+  - action: action_send_recipe
+  - action: utter_bye
+
+- story: interactive_story_1
+  steps:
+  - intent: inform
+  - action: action_check_data
+  - intent: inform
+    entities:
+    - cuisine: indian
+  - action: action_check_data
+  - intent: affirm
+  - action: action_search
+  - action: utter_do_you_like
+  - intent: affirm
+  - action: action_send_recipe
+  - action: utter_bye
+
+- story: interactive_story_2
+  steps:
+  - intent: inform
+    entities:
+    - cuisine: persian
+    - ingredient: tomato
+    - ingredient: potato
+  - action: action_check_data
+  - intent: inform_ingredient
+    entities:
+    - ingredient: white pepper
+  - action: action_add_remove_ingredient
+  - intent: affirm
+  - action: action_search
+  - action: utter_do_you_like
+  - intent: affirm
+  - action: action_send_recipe
+  - action: utter_bye
+
+- story: interactive_story_3
+  steps:
+  - intent: inform
+    entities:
+    - cuisine: persian
+  - action: action_check_data
+  - intent: affirm
+  - action: action_search
+  - action: utter_do_you_like
+  - intent: inform_ingredient
+    entities:
+    - ingredient: garlic
+  - action: action_add_remove_ingredient
+  - intent: affirm
+  - action: action_search
+  - action: utter_do_you_like
+  - intent: affirm
+  - action: action_send_recipe
+  - action: utter_bye
+
+- story: interactive_story_1
+  steps:
+  - intent: inform
+    entities:
+    - cuisine: mexican
+  - action: action_check_data
+  - intent: inform_ingredient
+    entities:
+    - ingredient: tomatos
+  - action: action_add_remove_ingredient
+  - intent: inform_ingredient
+    entities:
+    - ingredient: potatos
+  - action: action_add_remove_ingredient
+  - intent: affirm
+  - action: action_search
+  - action: utter_do_you_like
+  - intent: deny
+  - action: action_next_recipe
+  - action: utter_do_you_like
+  - intent: affirm
+  - action: action_send_recipe
+  - action: utter_bye
+
+- story: interactive_story_1
+  steps:
+  - intent: inform
+  - action: action_check_data
+  - intent: inform
+    entities:
+    - cuisine: American
+  - action: action_check_data
+  - intent: affirm
+  - action: action_search
+  - action: utter_do_you_like
+  - intent: affirm
+  - action: action_send_recipe
+  - action: utter_bye

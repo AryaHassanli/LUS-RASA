@@ -1,0 +1,179 @@
+version: "2.0"
+nlu:
+- intent: greet
+  examples: |
+    - my chief
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - morning
+    - hey bot
+    - hi robot
+    - hey assistant
+    - hello assitant
+    - are you there
+    - hello could you help me
+    - hi could you please help me
+    - hey help me please
+    - let's begin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+- intent: affirm
+  examples: |
+    - yes
+    - yeah
+    - uh yes
+    - that's it
+    - yes that's what i'm looking for
+    - for sure
+    - that's great
+    - fantastic
+    - great
+    - yeah i want it
+    - yes i need it
+    - yes that's what i need
+    - yes i look for this
+    - yeah this is what i want
+    - yes, thanks
+    - yes, thank you
+    - yes i'd like it
+    - yes i'd like to do it
+    - that's exactly what i need
+    - that's exactly what i want
+    - uh yes that's it
+    - yes bot
+    - yeah bot
+    - yea
+    - let's do it
+    - let's search it
+    - let's describe it for me
+    - yeah i want to cook it
+    - yeah i'd like to cook it
+    - i like that
+    - i love that
+    - yes i love that
+    - yeah i'm gonna choose it
+    - um yes
+    - um yeah
+    - um yeah i want it
+    - that't right
+    - that't correct
+    - go for it
+    - yes yes
+    - yeah sure
+    - yes srue
+    - correct
+    - of course
+    - yes of course
+    - yeah of course
+    - yeah correct
+    - you are right
+    - sounds good to me
+    - sounds good
+    - yes sounds good
+    - yeah works for me
+    - yes indeed
+    - indeed
+    - seems good
+    - yes thats it
+    - yeah thats not bad. i cook it
+    - yes yes [american](cuisine)
+    - to me too
+    - not bad
+    - yeah give me some
+    - uhum its better now
+    - Perfect match
+    - exactly
+    - uhum this one is better
+    - yes that's exactly what I said
+    - Great choice
+- intent: deny
+  examples: |
+    - no
+    - nope
+    - nah
+    - uh no
+    - oh no
+    - uh nope
+    - no thanks
+    - no thank you
+    - no I don't want it
+    - no that's not what I'm looking for
+    - no you are wrong
+    - no that's not correct
+    - no what are you talking about
+    - what are you talking about
+    - come on
+    - not at all
+    - that's not what I want.
+    - incorrect
+    - thank you for your help
+    - no please give me another recipe
+    - no give me another one
+    - no i don't like this
+    - i do not like this one
+    - could you please read the next one?
+    - could you please give me another one?
+    - give me another one
+    - read another recipe
+    - no i dont like it. give me another one.
+    - what a terrible recipe. move next.
+    - no next please
+    - next
+    - actually no
+    - actually not
+    - umm, not that much
+    - could you give me another recipe
+    - no thats not delicious
+    - no prefer something else
+    - tell me the next one. i do not like this
+    - no difference
+    - actually no, I do not like this one
+    - no no sorry i want some [american](cuisine)
+    - oh no, thats a lot of time. give me something else
+- intent: bye
+  examples: |
+    - bye
+    - good bye
+    - thank you
+    - thank's bye
+    - thank you bye
+    - bye bye
+    - have a nice day
+    - thank you bot
+    - thanks a lot
+    - thank you for your help
+    - bye bot
+    - goodbye bot
+    - good to see you
+    - okay thank you
+    - ok thanks
+    - ah thank you bye
+- intent: inform
+  examples: |
+    - what can i cook for dinner?
+    - I like [italian](cuisine) food
+    - lets give me some recipe to cook tonight
+    - umm i am thinking about something [italian](cuisine) now
+    - can you recommend me something for lunch
+    - lets give me some old [italian](cuisine) recipe for my dinner
+    - i have to cook something for dinner. do you have something to suggest me?
+    - I prefer [indian](cuisine)
+    - hi give me recipe of some [persian](cuisine) food with [tomato]{"entity": "ingredient", "role": "add"} and [potato]{"entity": "ingredient", "role": "add"}
+    - [persian](cuisine) recipe
+    - suggest me something [mexican](cuisine) for today
+    - What do you recommend me to cook in such a wonderful day
+    - I prefer something [American](cuisine) today
+- intent: inform_ingredient
+  examples: |
+    - and i am also allergic to [white pepper]{"entity": "ingredient", "role": "remove"}
+    - please also keep in mind that i dont like [garlic]{"entity": "ingredient", "role": "remove"}
+    - Yeah and please be aware that i hate [tomatos]{"entity": "ingredient", "role": "remove"}
+    - I also have some [potatos]{"entity": "ingredient", "role": "add"} spoiling, try to give me some recipe with them

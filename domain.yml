@@ -1,0 +1,49 @@
+version: '2.0'
+session_config:
+  session_expiration_time: 60
+
+intents:
+- greet:
+    use_entities: true
+- affirm:
+    use_entities: true
+- deny:
+    use_entities: true
+- bye:
+    use_entities: true
+- inform:
+    use_entities: true
+- inform_ingredient:
+    use_entities: true
+
+entities:
+- cuisine
+- ingredient:
+    roles:
+    - add
+    - remove
+    
+responses:
+  utter_greet:
+  - text: Hey! How can I help you?
+  - text: Hi there! How can I help you?
+  - text: Hey! Long time no see. May I help you?
+  - text: Such a nice day! Let me know what are you looking for?
+  - text: Hi! Let your bot help you. What do you need?
+  utter_general_ask:
+  - text: So what do you want?
+  - text: What are you looking for?
+  utter_do_you_like:
+  - text: Do you like it?
+  - text: How was that? you like it?
+  - text: Sounds good to me. what about you?
+  utter_bye:
+  - text: Have a nice day
+  - text: Goodbye!
+
+actions:
+- action_check_data
+- action_search
+- action_next_recipe
+- action_add_remove_ingredient
+- action_send_recipe
