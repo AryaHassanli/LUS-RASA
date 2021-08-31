@@ -3,19 +3,18 @@ session_config:
   session_expiration_time: 60
 
 intents:
-- greet:
-    use_entities: true
+- greet
 - affirm:
     use_entities: true
 - deny:
     use_entities: true
-- bye:
-    use_entities: true
+- bye
 - inform:
     use_entities: true
 - inform_ingredient:
     use_entities: true
-
+- challenge
+- ability
 entities:
 - cuisine
 - ingredient:
@@ -30,6 +29,7 @@ responses:
   - text: Hey! Long time no see. May I help you?
   - text: Such a nice day! Let me know what are you looking for?
   - text: Hi! Let your bot help you. What do you need?
+  - text: Your Majesty. At your service.
   utter_general_ask:
   - text: So what do you want?
   - text: What are you looking for?
@@ -37,9 +37,28 @@ responses:
   - text: Do you like it?
   - text: How was that? you like it?
   - text: Sounds good to me. what about you?
+  - text: Wanna try it?
+  - text: delicious! wanna try it?
   utter_bye:
   - text: Have a nice day
   - text: Goodbye!
+  - text: See you later.
+  - text: Be safe.
+  utter_please_rephrase:
+  - text: Sorry, I didn't catch that. Ask me to suggest you a specific cuisine with some ingredients.
+  - text: Sorry, my fault! Could you please reprase it? Ask me to suggest you a specific cuisine.
+  - text: Uh, I'm not as intelligent as you. Ask me to give you some recipe of a specific cuisine.
+  - text: My bad! Could you tell me again what do you need?
+  - text: Oops! I couldn't understand what's in your mind. Could you rephrase it?
+  utter_ability:
+  - text: I am your chief, but a recommender chief. I can help you find a recipe given the cuisine or ingredients. Don't like potatos? No big deal! Ask me to exclude it.
+  - text: Wanna try something new? I'll give you recipes that you have never seen. You say "Find me some italian food", I will find you the best. 
+  - text: Don't know what to cook for dinner? Your chief is here. Tell me what ingredients do you have and what you don't have. I'll try my best.
+  utter_challenge:
+  - text: I'm a real chief. Just like Auguste Gusteau.
+  - text: What is human? What is Robot? Who is chief? Let's cook something and enjoy.
+  utter_default:
+  - text: Sorry I didn't get that. Can you rephrase?
 
 actions:
 - action_check_data
