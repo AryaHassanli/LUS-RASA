@@ -8,6 +8,10 @@ from rasa.core.channels.channel import UserMessage, OutputChannel
 from rasa.core.channels.channel import InputChannel
 from rasa.core.channels.channel import CollectingOutputChannel
 
+from api import UserData
+import pickle
+import os
+
 logger = logging.getLogger(__name__)
 
 class AlexaConnector(InputChannel):
@@ -43,6 +47,19 @@ class AlexaConnector(InputChannel):
             session_id = session_object.get('sessionId')
             user_id = session_object.get('user',{}).get("userId")
             sender_id = user_id + session_id
+
+            user_data = UserData()
+            user_db_path = os.path.join(os.curdir,'db','db.pkl') 
+            if os.path.exists(user_db_path):        
+                with open(user_db_path,"rb") as f:
+                    db = pickle.load(f)
+                    if sender_id in db.keys():
+                        user_data = db[sender_id]
+                user_data.api_token = payload["context"]["System"]["apiAccessToken"]
+                user_data.api_endpoint = payload["context"]["System"]["apiEndpoint"]
+                db[sender_id] = user_data
+                with open(user_db_path,"wb") as f:
+                    pickle.dump(db,f)
 
             # if the user is starting the skill, let them
             # know it worked & what to do next

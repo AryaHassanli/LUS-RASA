@@ -18,6 +18,7 @@ import json
 import csv
 import pickle
 import spoonacular as sp
+import requests
 
 def is_clean_ingredient(ingredient):
     if isinstance(ingredient,list):
@@ -97,6 +98,8 @@ class UserData():
         self.ingredients_ex = []
         self.recipes = []
         self.last_read_recipe = 0
+        self.api_token = ""
+        self.api_endpoint = ""
 
 def load_user_data(tracker: Tracker) -> UserData:
     user_id = tracker.sender_id
@@ -173,16 +176,46 @@ def search_api(cuisine=None,ingredients=None, ingredients_ex=None) -> list:
         name = recipe["title"]
         time = recipe["readyInMinutes"]
         s = templates[i].format(name=name,time=time)
-        recipes.append(s)
+        url = recipe["spoonacularSourceUrl"]
+
+        recipes.append((s,url))
     random.shuffle(recipes)
     return recipes
 
 def generate_recipe_desctiption(recipe):
     # TODO
-    return str(recipe)
+    return str(recipe[0])
 
-def send_recipe(recipe, tracker):
-    # TODO
+def send_recipe(recipe, api_token, api_endpoint):
+    recipe_text = recipe[0]
+    recipe_url = recipe[1]
+    text = recipe_text + ": " + recipe_url
+    text = '+'.join(text.split(" "))
+
+    phone_number = get_phone_number(api_token, api_endpoint)
+    send_message(text, phone_number)
     print("Recipe Sent to Your Phone!")
     return True
 
+def send_message(text, phone_number):
+    callme_api = os.getenv("CALL_ME_API_KEY")
+    request_url = "https://api.callmebot.com/whatsapp.php?phone={}&text={}&apikey={}".format(
+        phone_number,
+        text,
+        callme_api
+    )
+    response = requests.get(request_url)
+    if response.status_code == 200:
+        return True
+    return False
+
+def get_phone_number(api_token, api_endpoint):
+    headers = {'Authorization': 'Bearer {}'.format(api_token)}
+    response = requests.get("{}/v2/accounts/~current/settings/Profile.mobileNumber".format(api_endpoint), headers=headers)
+    response = response.json()
+    phone_number = response["phoneNumber"].replace("-", "").replace(" ", "")
+    if not phone_number.startswith("+") and not phone_number.startswith("00"):
+        phone_number = response["countryCode"] + phone_number
+    if not phone_number.startswith("+"):
+        phone_number = "+" + phone_number
+    return phone_number

@@ -4,3 +4,4 @@
 /events.db-wal
 /ngrok
 /rasa.db
+*.pyc

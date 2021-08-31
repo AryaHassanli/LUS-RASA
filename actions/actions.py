@@ -188,6 +188,8 @@ class ActionSendRecipe(Action):
         recipe = user_data.recipes[
             user_data.last_read_recipe
         ]
-        send_recipe(recipe, tracker)
+        api_token = user_data.api_token
+        api_endpoint = user_data.api_endpoint
+        send_recipe(recipe, api_token, api_endpoint)
         dispatcher.utter_message("Nice! I sent the detailed description to your phone.")
         return []
