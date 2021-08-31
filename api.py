@@ -190,7 +190,6 @@ def send_recipe(recipe, api_token, api_endpoint):
     recipe_text = recipe[0]
     recipe_url = recipe[1]
     text = recipe_text + ": " + recipe_url
-    text = '+'.join(text.split(" "))
 
     phone_number = get_phone_number(api_token, api_endpoint)
     send_message(text, phone_number)
@@ -198,13 +197,12 @@ def send_recipe(recipe, api_token, api_endpoint):
     return True
 
 def send_message(text, phone_number):
-    callme_api = os.getenv("CALL_ME_API_KEY")
-    request_url = "https://api.callmebot.com/whatsapp.php?phone={}&text={}&apikey={}".format(
-        phone_number,
-        text,
-        callme_api
-    )
-    response = requests.get(request_url)
+    sms_api_key = os.getenv("SMS_API_KEY")
+    data = {"to": phone_number, "text": text}
+    headers = {"Authorization": "basic {}".format(sms_api_key)}
+    request_url = "https://gateway.sms77.io/api/sms"
+
+    response = requests.post(request_url, headers = headers, data= data)
     if response.status_code == 200:
         return True
     return False
