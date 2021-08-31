@@ -25,6 +25,7 @@ nlu:
     - goodmorning
     - goodevening
     - good afternoon
+    - hello bot
 - intent: affirm
   examples: |
     - yes
@@ -94,6 +95,8 @@ nlu:
     - uhum this one is better
     - yes that's exactly what I said
     - Great choice
+    - Looks nice
+    - Ow sounds good to me. I will cook it.
 - intent: deny
   examples: |
     - no
@@ -138,6 +141,7 @@ nlu:
     - actually no, I do not like this one
     - no no sorry i want some [american](cuisine)
     - oh no, thats a lot of time. give me something else
+    - oh no i do not like [pepper]{"entity": "ingredient", "role": "remove"}
 - intent: bye
   examples: |
     - bye
@@ -171,9 +175,44 @@ nlu:
     - suggest me something [mexican](cuisine) for today
     - What do you recommend me to cook in such a wonderful day
     - I prefer something [American](cuisine) today
+    - I am looking for some [italian](cuisine) recipe for my dinner
 - intent: inform_ingredient
   examples: |
     - and i am also allergic to [white pepper]{"entity": "ingredient", "role": "remove"}
     - please also keep in mind that i dont like [garlic]{"entity": "ingredient", "role": "remove"}
     - Yeah and please be aware that i hate [tomatos]{"entity": "ingredient", "role": "remove"}
     - I also have some [potatos]{"entity": "ingredient", "role": "add"} spoiling, try to give me some recipe with them
+    - yes, I want it to have [tomatoes]{"entity": "ingredient", "role": "add"} and I do not like [potatoes]{"entity": "ingredient", "role": "remove"}
+- intent: challenge
+  examples: |
+    - Are you a bot?
+    - are you a robot
+    - who are you
+    - who exactly are you
+    - i beleive that you are a robot
+    - are you a real chief
+    - you are not real. are you?
+    - are you a human
+    - are you a man or woman?
+    - you are a robot
+    - you are a chief
+    - you are a real human
+    - is be my chief a robot
+    - am i talking to a robot
+    - am i talking to a human
+- intent: ability
+  examples: |
+    - What do you do?
+    - how can you help me?
+    - what is your ability
+    - are you able to cook
+    - what is your skill
+    - how can i use you
+    - how can i use this bot
+    - introduce yourself
+    - let's talk about yourself
+    - tell me what you can do for me
+    - are you usefull
+    - help me
+    - help
+    - what do you do?
