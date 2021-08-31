@@ -36,10 +36,19 @@ class ActionCheckDate(Action):
             ingredient for ingredient in tracker.get_latest_entity_values("ingredient","add")]
         msg_ingredients_ex = [
             ingredient for ingredient in tracker.get_latest_entity_values("ingredient","remove")]
-            
-        user_data.cuisine = msg_cuisine
-        user_data.ingredients = msg_ingredients
-        user_data.ingredients_ex = msg_ingredients_ex
+        
+        if msg_cuisine:
+            user_data.cuisine = msg_cuisine
+        for ingredient in msg_ingredients:
+            if ingredient not in user_data.ingredients:
+                user_data.ingredients.append(ingredient)
+            if ingredient in user_data.ingredients_ex:
+                user_data.ingredients_ex.remove(ingredient)
+        for ingredient in msg_ingredients_ex:
+            if ingredient not in user_data.ingredients_ex:
+                user_data.ingredients_ex.append(ingredient)
+            if ingredient in user_data.ingredients:
+                user_data.ingredients.remove(ingredient)
 
         response = "So, you want to cook"
         if user_data.cuisine:
