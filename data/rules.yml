@@ -1,3 +1,19 @@
 version: "2.0"
 
 rules:
+- rule: NLU Fallback
+  steps:
+  - intent: nlu_fallback
+  - action: utter_please_rephrase
+
+- rule: Ability
+  steps:
+  - intent: ability
+  - action: utter_ability
+
+- rule: Challenge Bot
+  steps:
+  - intent: challenge
+  - action: utter_challenge
+
+  
