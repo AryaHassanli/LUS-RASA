@@ -375,3 +375,34 @@ stories:
   - intent: affirm
   - action: action_send_recipe
   - action: utter_bye
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ability
+  - action: utter_ability
+  - intent: affirm
+  - action: utter_general_ask
+  - intent: inform
+    entities:
+    - cuisine: italian
+  - action: action_check_data
+  - intent: inform_ingredient
+    entities:
+    - ingredient: tomatoes
+    - ingredient: potatoes
+  - action: action_add_remove_ingredient
+  - intent: affirm
+  - action: action_search
+  - action: utter_do_you_like
+  - intent: deny
+    entities:
+    - ingredient: pepper
+  - action: action_add_remove_ingredient
+  - intent: affirm
+  - action: action_search
+  - action: utter_do_you_like
+  - intent: affirm
+  - action: action_send_recipe
+  - action: utter_bye
