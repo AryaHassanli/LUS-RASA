@@ -1,7 +1,7 @@
 from api import get_cuisines, get_ingredients, get_recipes
 import random
 
-num_of_examples = 5000
+num_of_examples = 4000
 
 templates = [
     # Nothing
@@ -134,7 +134,7 @@ for i in range(num_of_examples):
         "ingredient_ex": ingredient_ex
     }
     template = template.format(**data)
-
+    
     out_file.write('    - {}\n'.format(template))
 
 out_file.close()

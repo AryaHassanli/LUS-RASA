@@ -1,7 +1,7 @@
 from api import get_cuisines, get_ingredients, get_recipes
 import random
 
-num_of_examples = 3000
+num_of_examples = 4000
 
 templates = [
     "i want to add {ingredient}",
