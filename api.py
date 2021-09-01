@@ -20,76 +20,6 @@ import pickle
 import spoonacular as sp
 import requests
 
-def is_clean_ingredient(ingredient):
-    if isinstance(ingredient,list):
-        for item in ingredient:
-            if is_clean_ingredient(item) == False:
-                return False
-    else:
-        for char in ingredient:
-            if not char.isalpha() and char != ' ':
-                return False
-    return True
-
-def get_recipes():
-    list_of_recipes = []
-    cuisine_files = [f for f in os.listdir(os.path.join(
-        os.curdir, "datasets", "recipes")) if f.endswith('.json')]
-    for cuisine_file in cuisine_files:
-        with open(os.path.join(os.curdir, "datasets", "recipes", cuisine_file), "r", encoding="UTF-8") as f:
-            recipes = json.load(f)
-            for recipe in recipes:
-                name = recipe['name']
-                ingredients = recipe['ingredients']
-                if not is_clean_ingredient(ingredients):
-                    continue
-                flavors = recipe['flavors'] if recipe['flavors'] is not None \
-                    else {
-                    "piquant": None,
-                    "sour": None,
-                    "salty": None,
-                    "sweet": None,
-                    "bitter": None,
-                    "meaty": None
-                }
-                cuisine = cuisine_file.lower()[:-5]
-                courses = recipe['course']
-
-                for course in courses:
-                    list_of_recipes.append({
-                        "name": name,
-                        "igredients": ingredients,
-                        "flavors": flavors,
-                        "cuisine": cuisine,
-                        "course": course
-                    })
-
-    return list_of_recipes
-
-def get_cuisines():
-    cuisines = []
-    with open(os.path.join(
-        os.curdir, "datasets", "cuisines.txt")) as file:
-        cuisines = file.readlines()
-        cuisines = [line.rstrip() for line in cuisines]
-    return cuisines
-
-def get_ingredients():
-    ingredients = set()
-    cuisine_files = [f for f in os.listdir(os.path.join(
-        os.curdir, "datasets", "recipes")) if f.endswith('.json')]
-    for cuisine_file in cuisine_files:
-        with open(os.path.join(os.curdir, "datasets", "recipes", cuisine_file), "r", encoding="UTF-8") as f:
-            recipes = json.load(f)
-            for recipe in recipes:
-                for ingredient in recipe['ingredients']:
-                    if not is_clean_ingredient(ingredient):
-                        continue
-                    ingredients.add(ingredient)
-    return list(ingredients)
-
-
-
 
 class UserData():
     def __init__(self):
@@ -158,7 +88,6 @@ def search_api(cuisine=None,ingredients=None, ingredients_ex=None) -> list:
     response = api.search_recipes_complex("", **kwargs)
     data = response.json()
     results = data['results']
-    print(results)
     templates = [
         "I got a great recipe for you; {name}. It will take {time} minutes to be ready.",
         "Such a wonderful one; {name}. It will take {time} minutes to be ready.",
@@ -217,3 +146,74 @@ def get_phone_number(api_token, api_endpoint):
     if not phone_number.startswith("+"):
         phone_number = "+" + phone_number
     return phone_number
+
+
+def is_clean_ingredient(ingredient):
+    if isinstance(ingredient,list):
+        for item in ingredient:
+            if is_clean_ingredient(item) == False:
+                return False
+    else:
+        for char in ingredient:
+            if not char.isalpha() and char != ' ':
+                return False
+    return True
+
+
+# The bellow functions are for generating the list of ingredients and recipes to create the NLU examples
+def get_recipes():
+    list_of_recipes = []
+    cuisine_files = [f for f in os.listdir(os.path.join(
+        os.curdir, "datasets", "recipes")) if f.endswith('.json')]
+    for cuisine_file in cuisine_files:
+        with open(os.path.join(os.curdir, "datasets", "recipes", cuisine_file), "r", encoding="UTF-8") as f:
+            recipes = json.load(f)
+            for recipe in recipes:
+                name = recipe['name']
+                ingredients = recipe['ingredients']
+                if not is_clean_ingredient(ingredients):
+                    continue
+                flavors = recipe['flavors'] if recipe['flavors'] is not None \
+                    else {
+                    "piquant": None,
+                    "sour": None,
+                    "salty": None,
+                    "sweet": None,
+                    "bitter": None,
+                    "meaty": None
+                }
+                cuisine = cuisine_file.lower()[:-5]
+                courses = recipe['course']
+
+                for course in courses:
+                    list_of_recipes.append({
+                        "name": name,
+                        "igredients": ingredients,
+                        "flavors": flavors,
+                        "cuisine": cuisine,
+                        "course": course
+                    })
+
+    return list_of_recipes
+
+def get_cuisines():
+    cuisines = []
+    with open(os.path.join(
+        os.curdir, "datasets", "cuisines.txt")) as file:
+        cuisines = file.readlines()
+        cuisines = [line.rstrip() for line in cuisines]
+    return cuisines
+
+def get_ingredients():
+    ingredients = set()
+    cuisine_files = [f for f in os.listdir(os.path.join(
+        os.curdir, "datasets", "recipes")) if f.endswith('.json')]
+    for cuisine_file in cuisine_files:
+        with open(os.path.join(os.curdir, "datasets", "recipes", cuisine_file), "r", encoding="UTF-8") as f:
+            recipes = json.load(f)
+            for recipe in recipes:
+                for ingredient in recipe['ingredients']:
+                    if not is_clean_ingredient(ingredient):
+                        continue
+                    ingredients.add(ingredient)
+    return list(ingredients)
