@@ -5,5 +5,7 @@
 /ngrok
 /rasa.db
 *.pyc
-db/db.pkl
 story_graph.dot
+tmp
+results/**
+db/db.pkl

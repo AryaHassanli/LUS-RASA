@@ -19,6 +19,7 @@ import csv
 import pickle
 import spoonacular as sp
 import requests
+from unidecode import unidecode
 
 
 class UserData():
@@ -215,5 +216,5 @@ def get_ingredients():
                 for ingredient in recipe['ingredients']:
                     if not is_clean_ingredient(ingredient):
                         continue
-                    ingredients.add(ingredient)
+                    ingredients.add(unidecode(ingredient))
     return list(ingredients)
