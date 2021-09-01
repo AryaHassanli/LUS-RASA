@@ -70,7 +70,7 @@ class ActionCheckDate(Action):
             if user_data.ingredients_ex[-1] != user_data.ingredients_ex[0]:
                 response += ", and {}".format(user_data.ingredients_ex[-1])
                  
-        response += "? Am I right? If you want, you can tell me what ingredients do you want to include or exclude."
+        response += "? Am I right?"
 
         if user_data.cuisine is None and len(user_data.ingredients) == 0 and len(user_data.ingredients) == 0:
             response = "Ok, please let me know what cuisine do you like."
