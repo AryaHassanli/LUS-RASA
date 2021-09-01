@@ -15,6 +15,8 @@ intents:
     use_entities: true
 - challenge
 - ability
+- out_of_scope
+
 entities:
 - cuisine
 - ingredient:
@@ -51,14 +53,16 @@ responses:
   - text: My bad! Could you tell me again what do you need?
   - text: Oops! I couldn't understand what's in your mind. Could you rephrase it?
   utter_ability:
-  - text: I am your chief, but a recommender chief. I can help you find a recipe given the cuisine or ingredients. Don't like potatos? No big deal! Ask me to exclude it.
+  - text: I am your chef, but a recommender chef. I can help you find a recipe given the cuisine or ingredients. Don't like potatos? No big deal! Ask me to exclude it.
   - text: Wanna try something new? I'll give you recipes that you have never seen. You say "Find me some italian food", I will find you the best. 
-  - text: Don't know what to cook for dinner? Your chief is here. Tell me what ingredients do you have and what you don't have. I'll try my best.
+  - text: Don't know what to cook for dinner? Your chef is here. Tell me what ingredients do you have and what you don't have. I'll try my best.
   utter_challenge:
-  - text: I'm a real chief. Just like Auguste Gusteau.
-  - text: What is human? What is Robot? Who is chief? Let's cook something and enjoy.
+  - text: I'm a real chef. Just like Auguste Gusteau.
+  - text: What is human? What is Robot? Who is chef? Let's cook something and enjoy.
   utter_default:
   - text: Sorry I didn't get that. Can you rephrase?
+  utter_out_of_scope:
+  - text: Sorry, I can't handle that request.
 
 actions:
 - action_check_data

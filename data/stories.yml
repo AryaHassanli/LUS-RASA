@@ -406,3 +406,52 @@ stories:
   - intent: affirm
   - action: action_send_recipe
   - action: utter_bye
+
+- story: interactive_story_1
+  steps:
+  - intent: inform
+    entities:
+    - cuisine: italian
+  - action: action_check_data
+  - intent: inform_ingredient
+    entities:
+    - ingredient: black pepper
+  - action: action_add_remove_ingredient
+  - intent: affirm
+  - action: action_search
+  - action: utter_do_you_like
+  - intent: affirm
+  - action: action_send_recipe
+  - action: utter_bye
+
+- story: interactive_story_2
+  steps:
+  - intent: inform
+    entities:
+    - cuisine: italian
+  - action: action_check_data
+  - intent: affirm
+  - action: action_search
+  - action: utter_do_you_like
+  - intent: affirm
+  - action: action_send_recipe
+  - action: utter_bye
+
+- story: interactive_story_3
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: inform
+    entities:
+    - cuisine: italian
+  - action: action_check_data
+  - intent: inform_ingredient
+    entities:
+    - ingredient: black pepper
+  - action: action_add_remove_ingredient
+  - intent: affirm
+  - action: action_search
+  - action: utter_do_you_like
+  - intent: affirm
+  - action: action_send_recipe
+  - action: utter_bye

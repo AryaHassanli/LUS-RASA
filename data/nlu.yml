@@ -2,7 +2,7 @@ version: "2.0"
 nlu:
 - intent: greet
   examples: |
-    - my chief
+    - my chef
     - hey
     - hello
     - hi
@@ -13,7 +13,7 @@ nlu:
     - hey bot
     - hi robot
     - hey assistant
-    - hello assitant
+    - hello assistant
     - are you there
     - hello could you help me
     - hi could you please help me
@@ -22,10 +22,17 @@ nlu:
     - hey there
     - let's go
     - hey dude
-    - goodmorning
-    - goodevening
     - good afternoon
     - hello bot
+    - hello my chef
+    - be my chef
+    - hi chef
+    - food recommender
+    - recipe suggester
+    - recipe recommender
+    - hi recipe recommender bot
+    - hello recipe master
+    - Hello
 - intent: affirm
   examples: |
     - yes
@@ -64,12 +71,12 @@ nlu:
     - um yes
     - um yeah
     - um yeah i want it
-    - that't right
-    - that't correct
+    - that's right
+    - that's correct
     - go for it
     - yes yes
     - yeah sure
-    - yes srue
+    - yes sure
     - correct
     - of course
     - yes of course
@@ -97,6 +104,10 @@ nlu:
     - Great choice
     - Looks nice
     - Ow sounds good to me. I will cook it.
+    - that is right
+    - looks nice
+    - no it is ok
+    - yeah seems good
 - intent: deny
   examples: |
     - no
@@ -134,6 +145,7 @@ nlu:
     - actually not
     - umm, not that much
     - could you give me another recipe
+    - could you give me something else
     - no thats not delicious
     - no prefer something else
     - tell me the next one. i do not like this
@@ -147,7 +159,7 @@ nlu:
     - bye
     - good bye
     - thank you
-    - thank's bye
+    - thanks bye
     - thank you bye
     - bye bye
     - have a nice day
@@ -176,28 +188,35 @@ nlu:
     - What do you recommend me to cook in such a wonderful day
     - I prefer something [American](cuisine) today
     - I am looking for some [italian](cuisine) recipe for my dinner
+    - could you please give me something [italian](cuisine)?
+    - give me some [italian](cuisine) food recipe
+    - I want to try some [italian](cuisine) dinner
 - intent: inform_ingredient
   examples: |
     - and i am also allergic to [white pepper]{"entity": "ingredient", "role": "remove"}
+    - yes i am also allergic to [white pepper]{"entity": "ingredient", "role": "remove"}
+    - but i am allergic to [white pepper]{"entity": "ingredient", "role": "remove"}
     - please also keep in mind that i dont like [garlic]{"entity": "ingredient", "role": "remove"}
-    - Yeah and please be aware that i hate [tomatos]{"entity": "ingredient", "role": "remove"}
-    - I also have some [potatos]{"entity": "ingredient", "role": "add"} spoiling, try to give me some recipe with them
+    - Yeah and please be aware that i hate [tomatoes]{"entity": "ingredient", "role": "remove"}
+    - I also have some [potatoes]{"entity": "ingredient", "role": "add"} spoiling, try to give me some recipe with them
     - yes, I want it to have [tomatoes]{"entity": "ingredient", "role": "add"} and I do not like [potatoes]{"entity": "ingredient", "role": "remove"}
+    - yes please keep in mind that i am allergic to [black pepper]{"entity": "ingredient", "role": "remove"}
+    - Ok please keep in mind that i am allergic to [black pepper]{"entity": "ingredient", "role": "remove"}
 - intent: challenge
   examples: |
     - Are you a bot?
     - are you a robot
     - who are you
     - who exactly are you
-    - i beleive that you are a robot
-    - are you a real chief
+    - i believe that you are a robot
+    - are you a real chef
     - you are not real. are you?
     - are you a human
     - are you a man or woman?
     - you are a robot
-    - you are a chief
+    - you are a chef
     - you are a real human
-    - is be my chief a robot
+    - is be my chef a robot
     - am i talking to a robot
     - am i talking to a human
 - intent: ability
@@ -212,7 +231,19 @@ nlu:
     - introduce yourself
     - let's talk about yourself
     - tell me what you can do for me
-    - are you usefull
+    - are you useful
     - help me
     - help
     - what do you do?
+- intent: out_of_scope
+  examples: |
+    - I want to order some food
+    - I want to order pizza
+    - buy me some food
+    - find me a restaurant
+    - find me a nearby restaurant
+    - is there any restaurant in the city center
+    - what is the closest grocery shop
+    - find me a shopping center
+    - how can i cook pizza
+    - how can i cook pasta
